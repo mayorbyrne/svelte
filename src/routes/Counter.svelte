@@ -11,10 +11,23 @@
 		// handle negative numbers
 		return ((n % m) + m) % m;
 	}
+
+	function handleCount(increase: boolean) {
+		let tempCount = count;
+		if (increase) {
+			tempCount += 1;
+		} else {
+			tempCount -= 1;
+		}
+		if (tempCount < 0) {
+			tempCount = 0;
+		}
+		count = tempCount;
+	}
 </script>
 
 <div class="counter">
-	<button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
+	<button on:click={() => handleCount(false)} aria-label="Decrease the counter by one">
 		<svg aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5" />
 		</svg>
@@ -27,7 +40,7 @@
 		</div>
 	</div>
 
-	<button on:click={() => (count += 1)} aria-label="Increase the counter by one">
+	<button on:click={() => handleCount(true)} aria-label="Increase the counter by one">
 		<svg aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
 		</svg>
